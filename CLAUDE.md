@@ -21,5 +21,13 @@ Coursework for "Análisis de grandes volúmenes de datos" (Big Data Analysis), 3
 ## Conventions
 
 - One notebook per topic/lesson; keep new work inside the appropriate `semN/` folder, or under `proyecto/etapaN/` for project deliverables.
-- PDFs in `proyecto/etapaN/` are assignment briefs from the instructor — read them for requirements, do not modify.
+- PDFs in `proyecto/etapaN/` are assignment briefs from the instructor; read them for requirements, do not modify.
 - `.idea/`, `Session.vim`, `.ipynb_checkpoints/`, and `.python-version` are gitignored; do not commit IDE/editor state.
+- Project deliverables must be portable: classmates and Google Colab should be able to open a notebook and run it. Keep dataset paths relative to the notebook (e.g. `Path("data/raw")` next to the notebook, not at repo root).
+- **Never execute the notebook's data-loading or compute cells from the agent side** (no `wget`, `curl`, `jupyter nbconvert --execute`, etc. on dataset downloads or Spark jobs). The user runs cells in Jupyter; the agent only writes them.
+
+## Output style (notebooks, prose, reports)
+
+- No emojis anywhere in user-facing output: notebooks, markdown, prose, print statements, log messages. Decorative checkmarks, arrows, and similar Unicode glyphs are an obvious AI tell — avoid them.
+- No em-dashes (—) or en-dashes (–) in prose. Use commas, colons, parentheses, or split into two sentences. Standard hyphens in code identifiers are fine.
+- No decorative ASCII separators (`===`, `---`, `>>>`, `-->`) in print output. A blank line is enough.
