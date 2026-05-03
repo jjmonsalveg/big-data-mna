@@ -31,3 +31,4 @@ Coursework for "Análisis de grandes volúmenes de datos" (Big Data Analysis), 3
 - No emojis anywhere in user-facing output: notebooks, markdown, prose, print statements, log messages. Decorative checkmarks, arrows, and similar Unicode glyphs are an obvious AI tell — avoid them.
 - No em-dashes (—) or en-dashes (–) in prose. Use commas, colons, parentheses, or split into two sentences. Standard hyphens in code identifiers are fine.
 - No decorative ASCII separators (`===`, `---`, `>>>`, `-->`) in print output. A blank line is enough.
+- Verify every external URL with WebFetch before writing it into a notebook, report, or any deliverable. Do not paste URLs from memory or training data: API doc paths change between versions and broken references damage the deliverable's credibility.
