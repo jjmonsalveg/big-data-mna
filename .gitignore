@@ -3,3 +3,4 @@
 .python-version
 Session.*
 proyecto/**/data/raw/*
+/proyecto/etapa2/data/processed/
