@@ -50,6 +50,8 @@ You must:
 - **Never read files outside the notebook path the orchestrator gave you**, unless asked for context (e.g., "also read CLAUDE.md").
 - Strip terminal escape sequences (`[...m`) from output text before returning it, so the orchestrator gets clean strings.
 - Spanish accents and special characters must round-trip intact. Do not "fix" them.
+- **Mandatory verification before reporting success.** After every `NotebookEdit` call (insert or replace), run a `Bash` `jq` query against the file to confirm the new content actually landed. Example for a replace: `jq -r '.cells[] | select(.id=="<id>") | .source | tostring | contains("<unique-snippet>")' "<path>"` must print `true`. Never report `replaced` or `inserted` without that verification. If verification fails, retry the `NotebookEdit` call up to 3 times. If still failing, return `ERROR: NotebookEdit reported success but jq verification failed` and stop.
+- **Honest tool-call accounting.** When the orchestrator asks for `tool_calls_made` in your report, count the actual `NotebookEdit` invocations you made in this session. Do not claim a number higher than what you actually did. `tool_calls_made=0` means you failed regardless of what other text you produce.
 
 ## Why this agent exists
 
